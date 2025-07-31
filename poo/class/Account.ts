@@ -1,12 +1,25 @@
 export default abstract class Account {
-    name: string;
-    accountNumber: string;
-    balance: number;
+    private name: string;
+    private accountNumber: string;
+    protected balance: number;
 
     constructor(name: string, accountNumber: string) {
         this.name = name;
         this.accountNumber = accountNumber;
         this.balance = 0
+    }
+
+    setName = (name: string): void => {
+        this.name = name;
+        console.log(`Account name set to ${this.name}`);
+    }
+
+    getName = (): string => {
+        return this.name;
+    }
+
+    getAccountNumber = (): string => {
+        return this.accountNumber;
     }
 
     deposit = (amount: number): void => {

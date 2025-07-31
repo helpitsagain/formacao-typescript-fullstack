@@ -9,11 +9,11 @@ export default class CompanyAccount extends Account {
             return;
         }
         this.balance += amount;
-        console.log(`Depositing $${amount} to ${this.name} account #${this.accountNumber}. Current balance is $${this.balance}`);
+        console.log(`Depositing $${amount} to ${this.getName()} account #${this.getAccountNumber()}. Current balance is $${this.balance}`);
     }
 
     getLoan: () => void = () => {
-        console.log(`Getting a loan for company ${this.name}`);
+        console.log(`Getting a loan for company ${this.getName()}`);
     }
 
     constructor(name: string, accountNumber: string, cnpj: string) {
