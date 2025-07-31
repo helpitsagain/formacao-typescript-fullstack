@@ -1,39 +1,8 @@
-// Dio Banking
-// name, accountNumber, balance
-// deposit, withdraw, getBalance
+import CompanyAccount from "./class/CompanyAccount";
+import PersonalAccount from "./class/PersonalAccount";
 
-abstract class Account {
-    name: string;
-    accountNumber: string;
-    balance: number;
+const userAccount: PersonalAccount = new PersonalAccount("John Doe", "0001", "123456789");
+userAccount.deposit(1000);
 
-    constructor(name: string, accountNumber: string) {
-        this.name = name;
-        this.accountNumber = accountNumber;
-        this.balance = 0
-    }
-
-    deposit = (amount: number): void => {
-        console.log(`Depositing ${amount} to account ${this.accountNumber}`);
-    }
-
-    withdraw = (amount: number): void => {
-        console.log(`Withdrawing ${amount} from account ${this.accountNumber}`);
-    }
-
-    getBalance = (): void => {
-        console.log(`Current balance is ${this.balance}`);
-    }
-}
-
-class UserAccount extends Account {
-    docId: string;
-
-    constructor(name:string, accountNumber:string, docId: string) {
-        super(name, accountNumber)
-        this.docId = docId;
-    }
-}
-
-const userAccount: UserAccount = new UserAccount("John Doe", "0001", "123456789");
-console.log(userAccount)
+const companyAccount: CompanyAccount = new CompanyAccount("Tech Corp", "0002", "987654321");
+companyAccount.deposit(5000);
