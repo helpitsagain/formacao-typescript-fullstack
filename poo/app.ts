@@ -9,7 +9,7 @@ companyAccount.deposit(5000);
 
 userAccount.setName("Jane Doe");
 
-userAccount.validateAccount();
+userAccount.validateAccount()
 
-userAccount.changeAccountStatus()
-userAccount.validateAccount();
+userAccount.changeAccountStatus();
+userAccount.withdraw(100);
