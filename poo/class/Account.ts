@@ -1,8 +1,8 @@
 export default abstract class Account {
     private name: string;
-    readonly accountNumber: string;
-    protected balance: number;
-    accountActive: boolean = true;
+    private readonly accountNumber: string;
+    private balance: number;
+    private accountActive: boolean = true;
 
     constructor(name: string, accountNumber: string, accountActive: boolean = true) {
         this.name = name;
@@ -54,8 +54,15 @@ export default abstract class Account {
     }
 
     getBalance = (): number => {
-        console.log(`Current balance is $${this.balance}`);
         return this.balance;
+    }
+
+    setBalance = (balance: number): void => {
+        if (balance < 0) {
+            console.log("Balance cannot be negative.");
+            return;
+        }
+        this.balance = balance;
     }
 
     changeAccountStatus = (): void => {
@@ -63,11 +70,11 @@ export default abstract class Account {
         console.log(`Account #${this.getAccountNumber()} status changed to ${this.accountActive ? "active" : "inactive"}.`);
     }
 
-    validateAccount = (): boolean => {
+    protected validateAccount = (): boolean => {
         if (this.accountActive) {
             console.log(`Account #${this.getAccountNumber()} is active.`);
             return this.accountActive;
-        } 
+        }
 
         console.log(`Account #${this.getAccountNumber()} is inactive.`);
         return this.accountActive;

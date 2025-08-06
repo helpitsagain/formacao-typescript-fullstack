@@ -1,19 +1,19 @@
 import Account from "./Account";
 
 export default class CompanyAccount extends Account {
-    cnpj: string;
+    private cnpj: string;
 
-    deposit = (amount: number): void => {
-        if (amount <= 0) {
-            console.log("Deposit amount must be greater than zero.");
+    getLoan = (amount: number): void => {
+        if (!this.validateAccount()) {
+            console.log(`Cannot grant loan. Account #${this.getAccountNumber()} is inactive.`);
             return;
         }
-        this.balance += amount;
-        console.log(`Depositing $${amount} to ${this.getName()} account #${this.getAccountNumber()}. Current balance is $${this.balance}`);
-    }
 
-    getLoan: () => void = () => {
-        console.log(`Getting a loan for company ${this.getName()}`);
+        const currentBalance = this.getBalance();
+
+        this.setBalance(currentBalance + amount);
+
+        console.log(`Loan of $${amount} granted to ${this.getName()}. Current balance is $${this.getBalance()}`);
     }
 
     constructor(name: string, accountNumber: string, cnpj: string) {
